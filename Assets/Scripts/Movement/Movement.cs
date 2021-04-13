@@ -41,6 +41,8 @@ public class Movement : MonoBehaviour
     public float dashTime;
     private int dashDir;
     public int extraJumps = 1;
+    public int dashes = 1;
+    private int dashCounter;
 
 
     //Camera settings
@@ -53,8 +55,11 @@ public class Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         crouchDisableCollider = GetComponent<BoxCollider2D>();
+       
+        //Setup counters
         jumpsLeft = extraJumps;
         dashTimeCounter = dashTime;
+        dashCounter = dashes;
     }
 
     // Update is called once per frame
@@ -62,9 +67,10 @@ public class Movement : MonoBehaviour
     {
         isGrounded = Physics2D.OverlapCircle(groundPoint.position, .2f, whatIsGround);
         //Move on X plane
-        if (!isCrouching)
+        if (!isCrouching && !Physics2D.OverlapCircle(crouchPoint.position, .4f, whatIsGround))
         {
             rb.velocity = new Vector2(inputX * moveSpeed, rb.velocity.y);
+            crouchDisableCollider.enabled = true;
         }
         else
         {
@@ -83,28 +89,36 @@ public class Movement : MonoBehaviour
         }
         jumpBufferCount -= Time.deltaTime;
 
+        //Extra jumps resett
         if (Physics2D.OverlapCircle(groundPoint.position, .2f, whatIsGround) == true)
         {
             jumpsLeft = extraJumps;
         }
 
+        //Camera adjustment
         if (inputX != 0)
         {
             cameraTarget.localPosition = new Vector3(Mathf.Lerp(cameraTarget.localPosition.x, aheadAmount * rb.velocity.x, aheadSpeed * Time.deltaTime), cameraTarget.localPosition.y, cameraTarget.localPosition.z);
         }
 
-        if (dashTime <= 0)
+        //Dash
+        if (dashTimeCounter <= 0)
         {
             dashDir = 0;
+            dashTimeCounter -= Time.deltaTime;
+            if (Physics2D.OverlapCircle(groundPoint.position, .2f, whatIsGround) == true && dashTimeCounter < -0.5f)
+            {
+                dashCounter = dashes;
+            }
         }
         else
         {
-            dashTime -= Time.deltaTime;
-            if (dashDir > 0)
+            dashTimeCounter -= Time.deltaTime;
+            if (dashDir > 0 && dashCounter >= 0)
             {
                 rb.velocity = Vector2.right * dashSpeed;
             }
-            else if (dashDir < 0)
+            else if (dashDir < 0 && dashCounter >= 0)
             {
                 rb.velocity = Vector2.left * dashSpeed;
             }
@@ -148,10 +162,11 @@ public class Movement : MonoBehaviour
 
     public void Dash(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && dashTimeCounter <= 0 && dashCounter > 0)
         {
             dashDir = (int)inputX;
-            dashTime = dashTimeCounter;
+            dashTimeCounter = dashTime;
+            dashCounter--;
         }
     }
 
@@ -165,7 +180,6 @@ public class Movement : MonoBehaviour
         else if (context.canceled)
         {
             isCrouching = false;
-            crouchDisableCollider.enabled = true;
         }
     }
 }
