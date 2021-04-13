@@ -61,8 +61,18 @@ public class Movement : MonoBehaviour
         dashTimeCounter = dashTime;
         dashCounter = dashes;
     }
-
-    // Update is called once per frame
+    private void Update()
+    {
+        if (inputX < 0)
+        {
+            GetComponentInChildren<SpriteRenderer>().flipX = true;
+        }    
+        else if (inputX > 0)
+        {
+            GetComponentInChildren<SpriteRenderer>().flipX = false;
+        }
+    }
+    
     void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundPoint.position, .2f, whatIsGround);
