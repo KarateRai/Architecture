@@ -63,7 +63,7 @@ public class Movement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundPoint.position, .2f, whatIsGround);
         //Move on X plane
@@ -128,18 +128,7 @@ public class Movement : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
-        if (context.ReadValue<Vector2>().x > 0)
-        {
-            inputX = 1;
-        }
-        else if (context.ReadValue<Vector2>().x < 0)
-        {
-            inputX = -1;
-        }
-        else
-        {
-            inputX = 0;
-        }
+        inputX = context.ReadValue<Vector2>().x;
     }
 
     public void Jump(InputAction.CallbackContext context)
