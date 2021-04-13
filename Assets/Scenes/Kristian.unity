@@ -341,6 +341,7 @@ GameObject:
   - component: {fileID: 969597078}
   - component: {fileID: 969597080}
   - component: {fileID: 969597079}
+  - component: {fileID: 969597081}
   m_Layer: 5
   m_Name: Pickup_number
   m_TagString: Untagged
@@ -364,7 +365,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: 0}
+  m_AnchoredPosition: {x: -104.9, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &969597079
@@ -464,6 +465,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 969597077}
   m_CullTransparentMesh: 1
+--- !u!114 &969597081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969597077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb0c689c788557947a99913f6edb7c9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickup_Text: {fileID: 969597079}
+  current_Pickup_Amount: 0
 --- !u!1 &1076082564
 GameObject:
   m_ObjectHideFlags: 0
@@ -749,6 +764,7 @@ MonoBehaviour:
   current_Attack: 1
   pickup_amount: 0
   healthBar: {fileID: 1514024}
+  pickup: {fileID: 0}
 --- !u!4 &1638783719
 Transform:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public int pickup_amount = 0;
 
     public HealthBar healthBar;
+    public Pickup pickup;
 
     void Start()
     {
@@ -17,10 +18,6 @@ public class Player : MonoBehaviour
         healthBar.SetMaxHealth(max_Health);
     }
 
-    void Update()
-    {
-          
-    }
     //TEMP: Just to test the healthbar function.
     void TakeDamage(int damage)
     {
@@ -34,7 +31,7 @@ public class Player : MonoBehaviour
         if(collision.gameObject.tag == "pickup")
         {
             Destroy(collision.gameObject);
-            pickup_amount++;
+            pickup.AddPickups();
         }
     }
 }
