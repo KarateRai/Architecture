@@ -136,6 +136,8 @@ public class AnimationState : MonoBehaviour
                 return false;
             case CharacterState.Crouch:
                 return false;
+            default:
+                return true;
         }
     }
     public bool CanJump()
@@ -158,6 +160,8 @@ public class AnimationState : MonoBehaviour
                 return false;
             case CharacterState.Crouch:
                 return false;
+            default: 
+                return true;
         }
     }
     public bool CanDash()
@@ -180,6 +184,8 @@ public class AnimationState : MonoBehaviour
                 return false;
             case CharacterState.Crouch:
                 return false;
+            default:
+                return true;
         }
     }
 }
