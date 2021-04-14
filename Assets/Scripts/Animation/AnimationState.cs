@@ -50,7 +50,7 @@ public class AnimationState : MonoBehaviour
 
     private void UpdateAnimator()
     {
-        Debug.LogWarning(currentState);
+        //Debug.LogWarning(currentState);
         switch (currentState)
         {
             case CharacterState.Idle:
@@ -108,6 +108,7 @@ public class AnimationState : MonoBehaviour
 
     public void SetCharacterState(CharacterState newState)
     {
+        Debug.Log("Setting state to: " + newState);
         currentState = newState;
     }
     public CharacterState GetCurrentCharacterState()

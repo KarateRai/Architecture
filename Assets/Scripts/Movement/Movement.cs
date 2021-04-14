@@ -9,8 +9,12 @@ public class Movement : MonoBehaviour
     Rigidbody2D rb;
     BoxCollider2D crouchDisableCollider;
     private float inputX;
-    private bool isGrounded;
+    public bool isGrounded;
     private int jumpsLeft;
+    private AnimationState animState;
+    private SpriteRenderer renderer;
+    public GameObject spriteObject;
+    private bool isFalling = false;
 
     //Public variables for inspector
     [Header("Movement Settings")]
@@ -55,35 +59,76 @@ public class Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         crouchDisableCollider = GetComponent<BoxCollider2D>();
+        //animState = GetComponentInChildren<AnimationState>();
+        
        
         //Setup counters
         jumpsLeft = extraJumps;
         dashTimeCounter = dashTime;
         dashCounter = dashes;
     }
+
+    private void Start()
+    {
+        animState = spriteObject.GetComponent<AnimationState>();
+        renderer = spriteObject.GetComponent<SpriteRenderer>();
+        
+    }
     private void Update()
     {
+        if (isFalling)
+        {
+            if (cayoteCounter < cayoteTime && rb.velocity.y < 0)
+            {
+                animState.SetCharacterState(AnimationState.CharacterState.Fall);
+            }
+            else
+            {
+                animState.SetCharacterState(AnimationState.CharacterState.Land);
+                isFalling = false;
+            }
+        }
+        else if(animState.GetCurrentCharacterState() != AnimationState.CharacterState.Land)
+        {
+
+            if (inputX == 0 && animState.GetCurrentCharacterState() != AnimationState.CharacterState.Idle)
+            {
+                animState.SetCharacterState(AnimationState.CharacterState.Idle);
+            }
+            else if (inputX != 0)
+            {
+                animState.SetCharacterState(AnimationState.CharacterState.Run);
+            }
+        }
+        
+
         if (inputX < 0)
         {
-            GetComponentInChildren<SpriteRenderer>().flipX = true;
-        }    
+            renderer.flipX = true;
+        }
         else if (inputX > 0)
         {
-            GetComponentInChildren<SpriteRenderer>().flipX = false;
+            renderer.flipX = false;
         }
+
+
+
     }
     
     void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundPoint.position, .2f, whatIsGround);
+        
         //Move on X plane
-        if (!isCrouching && !Physics2D.OverlapCircle(crouchPoint.position, .4f, whatIsGround))
+        if (!isCrouching && !Physics2D.OverlapCircle(crouchPoint.position, .4f, whatIsGround) && inputX != 0)
         {
+            
             rb.velocity = new Vector2(inputX * moveSpeed, rb.velocity.y);
             crouchDisableCollider.enabled = true;
         }
         else
         {
+            //animState.SetCharacterState(AnimationState.CharacterState.Run); //Crouch
             rb.velocity = new Vector2(inputX * crouchSpeed, rb.velocity.y);
         }
         
@@ -96,6 +141,7 @@ public class Movement : MonoBehaviour
         else
         {
             cayoteCounter -= Time.deltaTime;
+            isFalling = true;
         }
         jumpBufferCount -= Time.deltaTime;
 
