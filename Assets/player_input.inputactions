@@ -266,11 +266,33 @@
                 },
                 {
                     "name": "",
+                    "id": "cfd62c29-365a-4fd3-a44b-ff72f6d8630c",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "d7ec3a7c-4571-4df0-af76-67ea071af9a9",
                     "path": "<Keyboard>/s",
                     "interactions": "Hold",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
+                    "action": "Crouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "909c35f0-1b13-4dcf-ac13-419e9d6acd68",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
                     "action": "Crouch",
                     "isComposite": false,
                     "isPartOfComposite": false

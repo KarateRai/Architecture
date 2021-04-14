@@ -30,6 +30,7 @@ public class AnimationState : MonoBehaviour
 
     private void UpdateAnimator()
     {
+        Debug.LogWarning(currentState);
         switch (currentState)
         {
             case CharacterState.Idle:
