@@ -115,4 +115,71 @@ public class AnimationState : MonoBehaviour
     {
         return currentState;
     }
+
+    public bool CanMove()
+    {
+        switch (currentState)
+        {
+            case CharacterState.Idle:
+                return true;
+            case CharacterState.Run:
+                return true;
+            case CharacterState.Jump:
+                return true;
+            case CharacterState.Fall:
+                return true;
+            case CharacterState.Land: 
+                return false;
+            case CharacterState.Dash:
+                return true;
+            case CharacterState.Throw:
+                return false;
+            case CharacterState.Crouch:
+                return false;
+        }
+    }
+    public bool CanJump()
+    {
+        switch (currentState)
+        {
+            case CharacterState.Idle:
+                return true;
+            case CharacterState.Run:
+                return true;
+            case CharacterState.Jump:
+                return true;
+            case CharacterState.Fall:
+                return true;
+            case CharacterState.Land:
+                return false;
+            case CharacterState.Dash:
+                return false;
+            case CharacterState.Throw:
+                return false;
+            case CharacterState.Crouch:
+                return false;
+        }
+    }
+    public bool CanDash()
+    {
+        switch (currentState)
+        {
+            case CharacterState.Idle:
+                return true;
+            case CharacterState.Run:
+                return true;
+            case CharacterState.Jump:
+                return true;
+            case CharacterState.Fall:
+                return true;
+            case CharacterState.Land:
+                return false;
+            case CharacterState.Dash:
+                return false;
+            case CharacterState.Throw:
+                return false;
+            case CharacterState.Crouch:
+                return false;
+        }
+    }
 }
