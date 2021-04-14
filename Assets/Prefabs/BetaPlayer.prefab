@@ -100,6 +100,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3747526227892426499}
   - component: {fileID: 4958703013979283501}
+  - component: {fileID: 8497358143010445890}
+  - component: {fileID: 633544539773270012}
   m_Layer: 0
   m_Name: PlayerSprite
   m_TagString: Untagged
@@ -172,6 +174,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &8497358143010445890
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3747526227892426496}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 80c258bf28c8f8e4dacbd5894de0bdd1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &633544539773270012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3747526227892426496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9023a29b81093944bb436fb801ff7879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3747526228353177883
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,8 +219,6 @@ GameObject:
   - component: {fileID: 3747526228309938429}
   - component: {fileID: 781096795}
   - component: {fileID: 781096796}
-  - component: {fileID: 5196228971885992981}
-  - component: {fileID: 3488835090553599941}
   m_Layer: 0
   m_Name: BetaPlayer
   m_TagString: Untagged
@@ -246,6 +277,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b78ee2184f944246a4aee1163a7ed9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGrounded: 0
+  spriteObject: {fileID: 0}
   moveSpeed: 2
   crouchSpeed: 1.2
   jumpForce: 6
@@ -448,34 +481,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.55}
   serializedVersion: 2
   m_Radius: 0.15
---- !u!95 &5196228971885992981
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3747526228353177883}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 80c258bf28c8f8e4dacbd5894de0bdd1, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3488835090553599941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3747526228353177883}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9023a29b81093944bb436fb801ff7879, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
