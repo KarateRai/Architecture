@@ -7,6 +7,7 @@ using UnityEngine;
 public class AnimationState : MonoBehaviour
 {
     private Animator animator;
+    private List<string> animationBoolNames;
     public enum CharacterState
     {
         Idle,
@@ -15,14 +16,33 @@ public class AnimationState : MonoBehaviour
         Fall,
         Land,
         Dash,
-        Throw
+        Throw,
+        Crouch
     }
     private CharacterState currentState;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        animationBoolNames = new List<string>();
     }
+    private void Start()
+    {
+        SetAnimationNames();
+    }
+
+    private void SetAnimationNames()
+    {
+        //the names for all bools in animator related to their animation.
+        animationBoolNames.Add("isRunning");
+        animationBoolNames.Add("isJumping");
+        animationBoolNames.Add("isFalling");
+        animationBoolNames.Add("isLanding");
+        animationBoolNames.Add("isDashing");
+        animationBoolNames.Add("isThrowing");
+        animationBoolNames.Add("isCrouching");
+    }
+
     void Update()
     {
         UpdateAnimator();
@@ -34,65 +54,47 @@ public class AnimationState : MonoBehaviour
         switch (currentState)
         {
             case CharacterState.Idle:
-                animator.SetBool("isRunning", false);
-                animator.SetBool("isJumping", false);
-                animator.SetBool("isFalling", false);
-                animator.SetBool("isLanding", false);
-                animator.SetBool("isDashing", false);
-                animator.SetBool("isThrowing", false);
+                SetAniBoolTrue("AllOff"); //no bool is named AllOff, thus all will turn off.
                 break;
             case CharacterState.Run:
-                animator.SetBool("isRunning", true);
-                animator.SetBool("isJumping", false);
-                animator.SetBool("isFalling", false);
-                animator.SetBool("isLanding", false);
-                animator.SetBool("isDashing", false);
-                animator.SetBool("isThrowing", false);
+                SetAniBoolTrue("isRunning");
                 break;
             case CharacterState.Jump:
-                animator.SetBool("isRunning", false);
-                animator.SetBool("isJumping", true);
-                animator.SetBool("isFalling", false);
-                animator.SetBool("isLanding", false);
-                animator.SetBool("isDashing", false);
-                animator.SetBool("isThrowing", false);
+                SetAniBoolTrue("isJumping");
                 break;
             case CharacterState.Fall:
-                animator.SetBool("isRunning", false);
-                animator.SetBool("isJumping", false);
-                animator.SetBool("isFalling", true);
-                animator.SetBool("isLanding", false);
-                animator.SetBool("isDashing", false);
-                animator.SetBool("isThrowing", false);
+                SetAniBoolTrue("isFalling");
                 break;
             case CharacterState.Land: //TimeUpAnimation script should call for switching to idle OnStateExit.
-                animator.SetBool("isRunning", false);
-                animator.SetBool("isJumping", false);
-                animator.SetBool("isFalling", false);
-                animator.SetBool("isLanding", true);
-                animator.SetBool("isDashing", false);
-                animator.SetBool("isThrowing", false);
+                SetAniBoolTrue("isLanding");
                 break;
             case CharacterState.Dash:
-                animator.SetBool("isRunning", false);
-                animator.SetBool("isJumping", false);
-                animator.SetBool("isFalling", false);
-                animator.SetBool("isLanding", false);
-                animator.SetBool("isDashing", true);
-                animator.SetBool("isThrowing", false);
+                SetAniBoolTrue("isDashing");
                 break;
             case CharacterState.Throw:
-                animator.SetBool("isRunning", false);
-                animator.SetBool("isJumping", false);
-                animator.SetBool("isFalling", false);
-                animator.SetBool("isLanding", false);
-                animator.SetBool("isDashing", false);
-                animator.SetBool("isThrowing", false);
+                SetAniBoolTrue("isThrowing");
+                break;
+            case CharacterState.Crouch:
+                SetAniBoolTrue("isCrouching");
                 break;
         }
     }
 
-    internal void AnimationEnded(AnimatorStateInfo stateInfo)
+    internal void SetAniBoolTrue(string aniName)
+    {
+        foreach (string aniBool in animationBoolNames)
+        {
+            if (aniBool == aniName)
+            {
+                animator.SetBool(aniName, true);
+            }
+            else
+            {
+                animator.SetBool(aniBool, false);
+            }
+        }
+    }
+    internal void AnimationEnded(AnimatorStateInfo stateInfo) //use this if a transition to a new state needs to know when animation ends. needs setup in animator.
     {
         if (stateInfo.IsName("Land"))
         {
