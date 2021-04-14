@@ -82,13 +82,14 @@ public class Movement : MonoBehaviour
             {
                 animState.SetCharacterState(AnimationState.CharacterState.Fall);
             }
-            else
+            else if (animState.GetCurrentCharacterState() != AnimationState.CharacterState.Jump)
             {
                 animState.SetCharacterState(AnimationState.CharacterState.Land);
                 isFalling = false;
             }
         }
-        else if(animState.GetCurrentCharacterState() != AnimationState.CharacterState.Land)
+        else if(animState.GetCurrentCharacterState() != AnimationState.CharacterState.Land &&
+            animState.GetCurrentCharacterState() != AnimationState.CharacterState.Jump)
         {
 
             if (inputX == 0 && animState.GetCurrentCharacterState() != AnimationState.CharacterState.Idle)
@@ -198,6 +199,7 @@ public class Movement : MonoBehaviour
         {
             jumpsLeft--;
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            animState.SetCharacterState(AnimationState.CharacterState.Jump);
         }
         else if (context.canceled && rb.velocity.y > 0)
         {
