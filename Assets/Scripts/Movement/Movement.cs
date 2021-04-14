@@ -11,6 +11,7 @@ public class Movement : MonoBehaviour
     private float inputX;
     private bool isGrounded;
     private int jumpsLeft;
+    private AnimationState animState;
 
     //Public variables for inspector
     [Header("Movement Settings")]
@@ -55,6 +56,7 @@ public class Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         crouchDisableCollider = GetComponent<BoxCollider2D>();
+        animState = GetComponent<AnimationState>();
        
         //Setup counters
         jumpsLeft = extraJumps;
@@ -76,14 +78,20 @@ public class Movement : MonoBehaviour
     void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundPoint.position, .2f, whatIsGround);
-        //Move on X plane
-        if (!isCrouching && !Physics2D.OverlapCircle(crouchPoint.position, .4f, whatIsGround))
+        if (inputX == 0)
         {
+            animState.SetCharacterState(AnimationState.CharacterState.Idle);
+        }
+        //Move on X plane
+        if (!isCrouching && !Physics2D.OverlapCircle(crouchPoint.position, .4f, whatIsGround) && inputX != 0)
+        {
+            
             rb.velocity = new Vector2(inputX * moveSpeed, rb.velocity.y);
             crouchDisableCollider.enabled = true;
         }
         else
         {
+            animState.SetCharacterState(AnimationState.CharacterState.Run); //Crouch
             rb.velocity = new Vector2(inputX * crouchSpeed, rb.velocity.y);
         }
         
@@ -138,6 +146,7 @@ public class Movement : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
+        animState.SetCharacterState(AnimationState.CharacterState.Run);
         inputX = context.ReadValue<Vector2>().x;
     }
 
