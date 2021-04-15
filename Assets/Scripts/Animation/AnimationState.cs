@@ -106,7 +106,6 @@ public class AnimationState : MonoBehaviour
 
     public void SetCharacterState(CharacterState newState)
     {
-        Debug.Log("Setting state to: " + newState);
         currentState = newState;
     }
     public CharacterState GetCurrentCharacterState()
