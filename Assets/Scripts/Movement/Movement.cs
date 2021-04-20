@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
     public bool isGrounded;
     private int jumpsLeft;
     private AnimationState animState;
-    private SpriteRenderer renderer;
+    private SpriteRenderer spriteRenderer;
     public GameObject spriteObject;
     private bool isFalling = false;
 
@@ -71,8 +71,7 @@ public class Movement : MonoBehaviour
     private void Start()
     {
         animState = spriteObject.GetComponent<AnimationState>();
-        renderer = spriteObject.GetComponent<SpriteRenderer>();
-        
+        spriteRenderer = spriteObject.GetComponent<SpriteRenderer>();
     }
     private void Update()
     {
@@ -105,11 +104,11 @@ public class Movement : MonoBehaviour
 
         if (inputX < 0)
         {
-            renderer.flipX = true;
+            spriteRenderer.flipX = true;
         }
         else if (inputX > 0)
         {
-            renderer.flipX = false;
+            spriteRenderer.flipX = false;
         }
 
 
