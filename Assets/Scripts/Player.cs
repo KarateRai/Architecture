@@ -9,8 +9,8 @@ public class Player : MonoBehaviour
     public int current_Attack = 1;
     public int pickup_amount = 0;
 
-    public HealthBar healthBar;
-    public Pickup pickup;
+    public HealthBar_UI healthBar;
+    public Pickup_UI pickup;
 
     void Start()
     {
@@ -24,14 +24,5 @@ public class Player : MonoBehaviour
         current_Health -= damage;
 
         healthBar.SetHealth(current_Health);
-    }
-
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "pickup")
-        {
-            Destroy(collision.gameObject);
-            pickup.AddPickups();
-        }
     }
 }
