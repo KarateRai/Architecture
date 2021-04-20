@@ -188,4 +188,12 @@ public class AnimationState : MonoBehaviour
                 return true;
         }
     }
+    /// <summary>
+    /// Call on in cases where animations don't properly transition. (jumping going to land without falling etc)
+    /// </summary>
+    public void ReturnToIdle()
+    {
+        currentState = CharacterState.Idle;
+        animator.SetTrigger("ReturnToIdle");
+    }
 }
