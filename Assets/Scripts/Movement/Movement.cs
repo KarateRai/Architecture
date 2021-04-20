@@ -9,8 +9,12 @@ public class Movement : MonoBehaviour
     Rigidbody2D rb;
     BoxCollider2D crouchDisableCollider;
     private float inputX;
-    private bool isGrounded;
+    public bool isGrounded;
     private int jumpsLeft;
+    private AnimationState animState;
+    private SpriteRenderer renderer;
+    public GameObject spriteObject;
+    private bool isFalling = false;
 
     //Public variables for inspector
     [Header("Movement Settings")]
@@ -55,6 +59,8 @@ public class Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         crouchDisableCollider = GetComponent<BoxCollider2D>();
+        //animState = GetComponentInChildren<AnimationState>();
+        
        
         //Setup counters
         jumpsLeft = extraJumps;
@@ -62,18 +68,68 @@ public class Movement : MonoBehaviour
         dashCounter = dashes;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
+    {
+        animState = spriteObject.GetComponent<AnimationState>();
+        renderer = spriteObject.GetComponent<SpriteRenderer>();
+        
+    }
+    private void Update()
+    {
+        if (isFalling)
+        {
+            if (cayoteCounter < cayoteTime && rb.velocity.y < 0)
+            {
+                animState.SetCharacterState(AnimationState.CharacterState.Fall);
+            }
+            else if (animState.GetCurrentCharacterState() != AnimationState.CharacterState.Jump)
+            {
+                animState.SetCharacterState(AnimationState.CharacterState.Land);
+                isFalling = false;
+            }
+        }
+        else if(animState.GetCurrentCharacterState() != AnimationState.CharacterState.Land &&
+            animState.GetCurrentCharacterState() != AnimationState.CharacterState.Jump)
+        {
+
+            if (inputX == 0 && animState.GetCurrentCharacterState() != AnimationState.CharacterState.Idle)
+            {
+                animState.SetCharacterState(AnimationState.CharacterState.Idle);
+            }
+            else if (inputX != 0)
+            {
+                animState.SetCharacterState(AnimationState.CharacterState.Run);
+            }
+        }
+        
+
+        if (inputX < 0)
+        {
+            renderer.flipX = true;
+        }
+        else if (inputX > 0)
+        {
+            renderer.flipX = false;
+        }
+
+
+
+    }
+    
+    void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundPoint.position, .2f, whatIsGround);
+        
         //Move on X plane
-        if (!isCrouching && !Physics2D.OverlapCircle(crouchPoint.position, .4f, whatIsGround))
+        if (!isCrouching && !Physics2D.OverlapCircle(crouchPoint.position, .4f, whatIsGround) && inputX != 0)
         {
+            
             rb.velocity = new Vector2(inputX * moveSpeed, rb.velocity.y);
             crouchDisableCollider.enabled = true;
         }
         else
         {
+            //animState.SetCharacterState(AnimationState.CharacterState.Run); //Crouch
             rb.velocity = new Vector2(inputX * crouchSpeed, rb.velocity.y);
         }
         
@@ -86,6 +142,7 @@ public class Movement : MonoBehaviour
         else
         {
             cayoteCounter -= Time.deltaTime;
+            isFalling = true;
         }
         jumpBufferCount -= Time.deltaTime;
 
@@ -128,18 +185,7 @@ public class Movement : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
-        if (context.ReadValue<Vector2>().x > 0)
-        {
-            inputX = 1;
-        }
-        else if (context.ReadValue<Vector2>().x < 0)
-        {
-            inputX = -1;
-        }
-        else
-        {
-            inputX = 0;
-        }
+        inputX = context.ReadValue<Vector2>().x;
     }
 
     public void Jump(InputAction.CallbackContext context)
@@ -153,6 +199,7 @@ public class Movement : MonoBehaviour
         {
             jumpsLeft--;
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            animState.SetCharacterState(AnimationState.CharacterState.Jump);
         }
         else if (context.canceled && rb.velocity.y > 0)
         {
