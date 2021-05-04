@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5298673957079578357}
   - component: {fileID: 5298673957079578352}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: FloorSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 5298673957162816603}
   - component: {fileID: 5298673957162816602}
   m_Layer: 6
-  m_Name: BetaFloor (Missing Prefab)
+  m_Name: BetaFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

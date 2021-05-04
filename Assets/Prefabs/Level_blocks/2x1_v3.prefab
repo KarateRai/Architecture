@@ -485,7 +485,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2826158207797443072}
   - component: {fileID: 8163665870962906677}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -877,7 +877,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6729482031426476783}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: BaseColor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
