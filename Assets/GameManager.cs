@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -79,5 +80,17 @@ public class GameManager : MonoBehaviour
     private void OnDestroy()
     {
         Instance = null;
+    }
+
+    internal bool CanPause()
+    {
+        if (currentState == GameState.Playing)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
