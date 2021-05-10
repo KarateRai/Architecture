@@ -61,10 +61,13 @@ public class MenuManager : MonoBehaviour
             selectPrevious = false;
         }
     }
-    public void MenuEnter()
+    public void MenuEnter() //Todo: add restrictions on when it's possible to enter menu
     {
-        MenuAnimator.SetTrigger("MenuEnter");
+        if (GameManager.Instance.CanPause())
+        {
+        MenuAnimator.SetBool("InMenu", true);
         gameManager.Pause();
+        }
 
     }
     public void EnterSelection()
@@ -81,10 +84,14 @@ public class MenuManager : MonoBehaviour
             selectPrevious = true;
             onExitSelection.Invoke();
         }
+        else if (MenuAnimator.GetCurrentAnimatorStateInfo(0).IsName("MenuActive") && !isMainMenu)
+        {
+            MenuExit();
+        }
     }
     public void MenuExit()
     {
-        MenuAnimator.SetTrigger("MenuExit");
+        MenuAnimator.SetBool("InMenu", false);
         gameManager.UnPauseDelay(1);
         
     }

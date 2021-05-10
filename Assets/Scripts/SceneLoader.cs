@@ -27,7 +27,6 @@ public class SceneLoader : MonoBehaviour
     {
         yield return new WaitForSeconds(FadeOutDelay);
         transitionAnimator.SetTrigger("ToBlack");
-        Debug.Log(toBlackAnimation.length);
         yield return new WaitForSeconds(toBlackTime);
         SceneManager.LoadScene(sceneName);
     }
