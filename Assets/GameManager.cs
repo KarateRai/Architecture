@@ -27,6 +27,17 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
     }
+    private void Start()
+    {
+        List<SpriteRenderer> transparentFXsprites = new List<SpriteRenderer>();
+        foreach (SpriteRenderer o in FindObjectsOfType<SpriteRenderer>())
+        {
+            if (o.tag == "HideOnStart")
+            {
+                o.enabled = false;
+            }
+        }
+    }
     private void Update()
     {
         switch (currentState)

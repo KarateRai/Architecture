@@ -1078,8 +1078,12 @@ MonoBehaviour:
   MenuAnimator: {fileID: 1651582693}
   eventSystem: {fileID: 376639364}
   playerInput: {fileID: 1100587000}
+  onExitSelection:
+    m_PersistentCalls:
+      m_Calls: []
   isMainMenu: 0
   initialButton: {fileID: 1651582691}
+  initialSelection: 0
 --- !u!224 &495738095
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2287,10 +2291,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BetaPlayer
       objectReference: {fileID: 0}
-    - target: {fileID: 4958703013979283501, guid: ee5b3b38e52a34542a8103549a908033, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee5b3b38e52a34542a8103549a908033, type: 3}
 --- !u!1 &1477763453 stripped
@@ -3260,7 +3260,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3485944814177938940, guid: d382cb0df7ebbdb4a86e0b57c0b1ddec, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0000009536743
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3485944814177938940, guid: d382cb0df7ebbdb4a86e0b57c0b1ddec, type: 3}
       propertyPath: m_LocalPosition.y

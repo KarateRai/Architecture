@@ -505,7 +505,7 @@ GameObject:
   - component: {fileID: 4267634468601018364}
   m_Layer: 1
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: HideOnStart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
