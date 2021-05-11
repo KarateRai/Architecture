@@ -78,6 +78,7 @@ public class SkyBoxBG : MonoBehaviour
         bgPos = GetNewPosition();
         transform.position = bgPos;
     }
+    
 
     private Vector3 GetNewPosition()
     {

@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class pickupObject : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Add score to UI
-        Debug.Log("Trying to destroy");
         GameObject.Destroy(gameObject);
     }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    //Add score to UI
+    //    //Debug.Log("Trying to destroy");
+    //    GameObject.Destroy(gameObject);
+    //}
 }
