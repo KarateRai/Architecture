@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 808832994}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CameraTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 808832993}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3747526228353177882}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1489385941}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GroundPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1818755279}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrouchPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 4958703013979283501}
   - component: {fileID: 8497358143010445890}
   - component: {fileID: 633544539773270012}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 3747526228309938402}
   - component: {fileID: 781096795}
   - component: {fileID: 781096796}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BetaPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
