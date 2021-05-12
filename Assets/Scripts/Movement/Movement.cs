@@ -38,14 +38,16 @@ public class Movement : MonoBehaviour
     //Jump buffer
     public float jumpBuffer;
     private float jumpBufferCount;
+    public int extraJumps = 1;
 
     //Dash
     [Header("Special Movement settings")]
     public float dashSpeed;
-    private float dashTimeCounter;
     public float dashTime;
-    private int dashDir;
-    public int extraJumps = 1;
+    public float dashTimeCounter;
+    public float dashCooldown;
+    public float dashCooldownCounter;
+    private float dashDir;
     public int dashes = 1;
     public int dashCounter;
 
@@ -66,6 +68,7 @@ public class Movement : MonoBehaviour
         //Setup counters
         jumpsLeft = extraJumps;
         dashTimeCounter = dashTime;
+        dashCooldownCounter = dashCooldown;
         dashCounter = dashes;
     }
 
@@ -120,7 +123,7 @@ public class Movement : MonoBehaviour
     void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundPoint.position, .2f, whatIsGround);
-        
+
         //Move on X plane
         if (!isCrouching && !Physics2D.OverlapCircle(crouchPoint.position, .4f, whatIsGround) && inputX != 0)
         {
@@ -163,8 +166,9 @@ public class Movement : MonoBehaviour
         if (dashTimeCounter <= 0)
         {
             dashDir = 0;
-            dashTimeCounter -= Time.deltaTime;
-            if (Physics2D.OverlapCircle(groundPoint.position, .2f, whatIsGround) == true && dashTimeCounter < -0.5f)
+            dashCooldownCounter -= Time.deltaTime;
+            //dashTimeCounter -= Time.deltaTime;
+            if (/*Physics2D.OverlapCircle(groundPoint.position, .2f, whatIsGround) == true && */dashCooldownCounter < 0)
             {
                 dashCounter = dashes;
             }
@@ -212,8 +216,9 @@ public class Movement : MonoBehaviour
     {
         if (context.performed && dashTimeCounter <= 0 && dashCounter > 0)
         {
-            dashDir = (int)inputX;
+            dashDir = inputX;
             dashTimeCounter = dashTime;
+            dashCooldownCounter = dashCooldown;
             dashCounter--;
             animState.SetCharacterState(AnimationState.CharacterState.Dash);
         }
@@ -229,6 +234,15 @@ public class Movement : MonoBehaviour
         else if (context.canceled)
         {
             isCrouching = false;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Teleporter t = collision.GetComponent<Teleporter>();
+        if (t != null)
+        {
+            this.transform.position = t.teleportTo.position;
         }
     }
 }

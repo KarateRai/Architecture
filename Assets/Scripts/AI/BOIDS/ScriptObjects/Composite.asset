@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b66f335929c63346a695a7cd1c8a3a4, type: 3}
   m_Name: Composite
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier:
   behaviors:
   - {fileID: 11400000, guid: 4726f8e093f840a4f9baa5e283269b5a, type: 2}
   - {fileID: 11400000, guid: b9f6d1b727c5ab84f9141cb88e9e5e4a, type: 2}
