@@ -322,7 +322,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4819455260674434869, guid: d382cb0df7ebbdb4a86e0b57c0b1ddec, type: 3}
       propertyPath: target
-      value: 
+      value:
       objectReference: {fileID: 808832993}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d382cb0df7ebbdb4a86e0b57c0b1ddec, type: 3}
@@ -521,7 +521,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &3442797066873512457
+--- !u!114 &2087257733 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 633544539773270012, guid: ee5b3b38e52a34542a8103549a908033, type: 3}
+  m_PrefabInstance: {fileID: 3747526228798459469}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9023a29b81093944bb436fb801ff7879, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+--- !u!1001 &3747526228798459469
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -574,7 +585,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3277037062758124767, guid: c910b2bcc9014104fa7b4850ab0e4c6c, type: 3}
       propertyPath: checkPoint
-      value: 
+      value:
       objectReference: {fileID: 881201233}
     - target: {fileID: 6619320668162322250, guid: c910b2bcc9014104fa7b4850ab0e4c6c, type: 3}
       propertyPath: m_IsTrigger

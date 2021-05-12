@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -112,8 +113,9 @@ public class Movement : MonoBehaviour
         }
 
 
-
+        
     }
+
     
     void FixedUpdate()
     {
@@ -213,6 +215,7 @@ public class Movement : MonoBehaviour
             dashDir = (int)inputX;
             dashTimeCounter = dashTime;
             dashCounter--;
+            animState.SetCharacterState(AnimationState.CharacterState.Dash);
         }
     }
 
