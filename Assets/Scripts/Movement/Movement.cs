@@ -118,7 +118,7 @@ public class Movement : MonoBehaviour
     void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundPoint.position, .2f, whatIsGround);
-        
+
         //Move on X plane
         if (!isCrouching && !Physics2D.OverlapCircle(crouchPoint.position, .4f, whatIsGround) && inputX != 0)
         {
@@ -226,6 +226,15 @@ public class Movement : MonoBehaviour
         else if (context.canceled)
         {
             isCrouching = false;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Teleporter t = collision.GetComponent<Teleporter>();
+        if (t != null)
+        {
+            this.transform.position = t.TeleportTo.position;
         }
     }
 }
