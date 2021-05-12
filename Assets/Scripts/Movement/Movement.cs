@@ -23,7 +23,6 @@ public class Movement : MonoBehaviour
     public float crouchSpeed;
     public float jumpForce;
     public float crawlSpeed;
-    private bool isCrouching;
 
     [Header("Movement Control Points")]
     public Transform groundPoint;
@@ -44,12 +43,12 @@ public class Movement : MonoBehaviour
     [Header("Special Movement settings")]
     public float dashSpeed;
     public float dashTime;
-    public float dashTimeCounter;
+    private float dashTimeCounter;
     public float dashCooldown;
-    public float dashCooldownCounter;
+    private float dashCooldownCounter;
     private float dashDir;
     public int dashes = 1;
-    public int dashCounter;
+    private int dashCounter;
 
 
     //Camera settings
@@ -62,7 +61,6 @@ public class Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         crouchDisableCollider = GetComponent<BoxCollider2D>();
-        //animState = GetComponentInChildren<AnimationState>();
         
        
         //Setup counters
@@ -125,18 +123,8 @@ public class Movement : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundPoint.position, .2f, whatIsGround);
 
         //Move on X plane
-        if (!isCrouching && !Physics2D.OverlapCircle(crouchPoint.position, .4f, whatIsGround) && inputX != 0)
-        {
-            
-            rb.velocity = new Vector2(inputX * moveSpeed, rb.velocity.y);
-            crouchDisableCollider.enabled = true;
-        }
-        else
-        {
-            //animState.SetCharacterState(AnimationState.CharacterState.Run); //Crouch
-            rb.velocity = new Vector2(inputX * crouchSpeed, rb.velocity.y);
-        }
-        
+        rb.velocity = new Vector2(inputX * moveSpeed, rb.velocity.y);
+
 
         //Cayote timer
         if (isGrounded)
@@ -167,8 +155,7 @@ public class Movement : MonoBehaviour
         {
             dashDir = 0;
             dashCooldownCounter -= Time.deltaTime;
-            //dashTimeCounter -= Time.deltaTime;
-            if (/*Physics2D.OverlapCircle(groundPoint.position, .2f, whatIsGround) == true && */dashCooldownCounter < 0)
+            if (dashCooldownCounter < 0)
             {
                 dashCounter = dashes;
             }
