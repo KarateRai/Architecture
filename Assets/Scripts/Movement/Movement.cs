@@ -23,7 +23,6 @@ public class Movement : MonoBehaviour
     public float crouchSpeed;
     public float jumpForce;
     public float crawlSpeed;
-    private bool isCrouching;
 
     [Header("Movement Control Points")]
     public Transform groundPoint;
@@ -44,12 +43,12 @@ public class Movement : MonoBehaviour
     [Header("Special Movement settings")]
     public float dashSpeed;
     public float dashTime;
-    public float dashTimeCounter;
+    private float dashTimeCounter;
     public float dashCooldown;
     public float dashCooldownCounter;
     private float dashDir = 1;
     public int dashes = 1;
-    public int dashCounter;
+    private int dashCounter;
 
 
     //Camera settings
@@ -62,9 +61,8 @@ public class Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         crouchDisableCollider = GetComponent<BoxCollider2D>();
-        //animState = GetComponentInChildren<AnimationState>();
-        
-       
+
+
         //Setup counters
         jumpsLeft = extraJumps;
         dashTimeCounter = dashTime;
@@ -104,7 +102,7 @@ public class Movement : MonoBehaviour
                 animState.SetCharacterState(AnimationState.CharacterState.Run);
             }
         }
-        
+
 
         if (inputX < 0)
         {
@@ -118,27 +116,17 @@ public class Movement : MonoBehaviour
         }
 
 
-        
+
     }
 
-    
+
     void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundPoint.position, .2f, whatIsGround);
 
         //Move on X plane
-        if (!isCrouching && !Physics2D.OverlapCircle(crouchPoint.position, .4f, whatIsGround) && inputX != 0)
-        {
-            
-            rb.velocity = new Vector2(inputX * moveSpeed, rb.velocity.y);
-            crouchDisableCollider.enabled = true;
-        }
-        else
-        {
-            //animState.SetCharacterState(AnimationState.CharacterState.Run); //Crouch
-            rb.velocity = new Vector2(inputX * crouchSpeed, rb.velocity.y);
-        }
-        
+        rb.velocity = new Vector2(inputX * moveSpeed, rb.velocity.y);
+
 
         //Cayote timer
         if (isGrounded)
@@ -169,8 +157,7 @@ public class Movement : MonoBehaviour
         {
             //dashDir = 0;
             dashCooldownCounter -= Time.deltaTime;
-            //dashTimeCounter -= Time.deltaTime;
-            if (/*Physics2D.OverlapCircle(groundPoint.position, .2f, whatIsGround) == true && */dashCooldownCounter < 0)
+            if (dashCooldownCounter < 0)
             {
                 dashCounter = dashes;
             }
@@ -187,7 +174,7 @@ public class Movement : MonoBehaviour
                 rb.velocity = Vector2.left * dashSpeed;
             }
         }
-       
+
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -201,7 +188,7 @@ public class Movement : MonoBehaviour
         {
             jumpBufferCount = jumpBuffer;
         }
-        
+
         if (jumpBufferCount >= 0 && cayoteCounter > 0 && context.performed || jumpBufferCount >= 0 && jumpsLeft > 0 && context.performed)
         {
             jumpsLeft--;
@@ -226,18 +213,6 @@ public class Movement : MonoBehaviour
         }
     }
 
-    public void Crouch(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            isCrouching = true;
-            crouchDisableCollider.enabled = false;
-        }
-        else if (context.canceled)
-        {
-            isCrouching = false;
-        }
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -248,4 +223,3 @@ public class Movement : MonoBehaviour
         }
     }
 }
-
