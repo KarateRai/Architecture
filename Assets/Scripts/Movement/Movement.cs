@@ -47,7 +47,7 @@ public class Movement : MonoBehaviour
     public float dashTimeCounter;
     public float dashCooldown;
     public float dashCooldownCounter;
-    private float dashDir;
+    private float dashDir = 1;
     public int dashes = 1;
     public int dashCounter;
 
@@ -109,10 +109,12 @@ public class Movement : MonoBehaviour
         if (inputX < 0)
         {
             spriteRenderer.flipX = true;
+            dashDir = -1;
         }
         else if (inputX > 0)
         {
             spriteRenderer.flipX = false;
+            dashDir = 1;
         }
 
 
@@ -165,7 +167,7 @@ public class Movement : MonoBehaviour
         //Dash
         if (dashTimeCounter <= 0)
         {
-            dashDir = 0;
+            //dashDir = 0;
             dashCooldownCounter -= Time.deltaTime;
             //dashTimeCounter -= Time.deltaTime;
             if (/*Physics2D.OverlapCircle(groundPoint.position, .2f, whatIsGround) == true && */dashCooldownCounter < 0)
@@ -216,7 +218,7 @@ public class Movement : MonoBehaviour
     {
         if (context.performed && dashTimeCounter <= 0 && dashCounter > 0)
         {
-            dashDir = inputX;
+            //dashDir = inputX;
             dashTimeCounter = dashTime;
             dashCooldownCounter = dashCooldown;
             dashCounter--;
