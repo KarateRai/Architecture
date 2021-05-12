@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
                 {
                     playerInput.SwitchCurrentActionMap("Player");
                     currentActionMap = ActionMaps.Gameplay;
+                    Time.timeScale = 1f;
                 }
                 break;
             case GameState.Paused:
@@ -54,6 +55,7 @@ public class GameManager : MonoBehaviour
                 {
                     playerInput.SwitchCurrentActionMap("UI");
                     currentActionMap = ActionMaps.Menu;
+                    Time.timeScale = 0f;
                 }
                 break;
         }
@@ -72,7 +74,7 @@ public class GameManager : MonoBehaviour
     }
     private IEnumerator DelayedPause(float delay)
     {
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSecondsRealtime(delay);
         UnPause();
     }
     public bool IsPaused()
