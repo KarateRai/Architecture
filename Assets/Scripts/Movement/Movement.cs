@@ -211,19 +211,7 @@ public class Movement : MonoBehaviour
         }
     }
 
-    public void Crouch(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            isCrouching = true;
-            crouchDisableCollider.enabled = false;
-        }
-        else if (context.canceled)
-        {
-            isCrouching = false;
-        }
-    }
-
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Teleporter t = collision.GetComponent<Teleporter>();
