@@ -925,6 +925,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7230991703586662185, guid: 2d1c5afc4540f144dbc726f226e3e2f3, type: 3}
+      propertyPath: GUIobject
+      value: 
+      objectReference: {fileID: 2122537700}
+    - target: {fileID: 7230991703586662185, guid: 2d1c5afc4540f144dbc726f226e3e2f3, type: 3}
       propertyPath: playerInput
       value: 
       objectReference: {fileID: 1859954066}
@@ -2788,7 +2792,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2122537701
 Transform:
   m_ObjectHideFlags: 0

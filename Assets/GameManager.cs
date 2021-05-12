@@ -8,7 +8,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public PlayerInput playerInput;
-    
+    public GameObject GUIobject;
+    public GameObject TransitionLayer;
     public static GameManager Instance;
     private enum ActionMaps
     {
@@ -26,6 +27,8 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        GUIobject.SetActive(true);
+        TransitionLayer.SetActive(true);
     }
     private void Start()
     {
