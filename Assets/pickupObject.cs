@@ -6,6 +6,7 @@ public class pickupObject : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Player.AddPoints(1);
         GameObject.Destroy(gameObject);
     }
     //private void OnCollisionEnter2D(Collision2D collision)

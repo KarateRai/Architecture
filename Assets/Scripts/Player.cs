@@ -2,24 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public static class Player
 {
-    public int current_Health;
-    public int max_Health = 100;
-    public int current_Attack = 1;
-    public int pickup_amount = 0;
+    public static int current_Health = 100;
+    public static int max_Health = 100;
+    public static int current_Attack = 1;
+    public static int pickup_amount = 0;
 
-    public HealthBar_UI healthBar;
-    public Pickup_UI pickup;
+    public static HealthBar_UI healthBar;
+    public static Pickup_UI pickup;
 
-    void Start()
+    public static void AddPoints(int i)
     {
-        current_Health = max_Health;
-        healthBar.SetMaxHealth(max_Health);
+        pickup_amount += i;
+    }
+
+    public static void ResetPoints()
+    {
+        pickup_amount = 0;
     }
 
     //TEMP: Just to test the healthbar function.
-    void TakeDamage(int damage)
+    public static void TakeDamage(int damage)
     {
         current_Health -= damage;
 

@@ -8,7 +8,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public PlayerInput playerInput;
-    
+    public GameObject GUIobject;
+    public GameObject TransitionLayer;
     public static GameManager Instance;
     private enum ActionMaps
     {
@@ -26,9 +27,12 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        GUIobject.SetActive(true);
+        TransitionLayer.SetActive(true);
     }
     private void Start()
     {
+        Player.ResetPoints();
         List<SpriteRenderer> transparentFXsprites = new List<SpriteRenderer>();
         foreach (SpriteRenderer o in FindObjectsOfType<SpriteRenderer>())
         {
@@ -47,6 +51,7 @@ public class GameManager : MonoBehaviour
                 {
                     playerInput.SwitchCurrentActionMap("Player");
                     currentActionMap = ActionMaps.Gameplay;
+                    Time.timeScale = 1f;
                 }
                 break;
             case GameState.Paused:
@@ -54,6 +59,7 @@ public class GameManager : MonoBehaviour
                 {
                     playerInput.SwitchCurrentActionMap("UI");
                     currentActionMap = ActionMaps.Menu;
+                    Time.timeScale = 0f;
                 }
                 break;
         }
@@ -72,7 +78,7 @@ public class GameManager : MonoBehaviour
     }
     private IEnumerator DelayedPause(float delay)
     {
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSecondsRealtime(delay);
         UnPause();
     }
     public bool IsPaused()
