@@ -24,8 +24,9 @@ public class MenuManager : MonoBehaviour
     private void Start()
     {
         gameManager = GameManager.Instance;
+        
     }
-    private void FixedUpdate()
+    private void Update()
     {
         if (isMainMenu)
         {

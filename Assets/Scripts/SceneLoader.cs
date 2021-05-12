@@ -25,9 +25,9 @@ public class SceneLoader : MonoBehaviour
 
     IEnumerator TransitionTo(string sceneName)
     {
-        yield return new WaitForSeconds(FadeOutDelay);
+        yield return new WaitForSecondsRealtime(FadeOutDelay);
         transitionAnimator.SetTrigger("ToBlack");
-        yield return new WaitForSeconds(toBlackTime);
+        yield return new WaitForSecondsRealtime(toBlackTime);
         SceneManager.LoadScene(sceneName);
     }
 
@@ -38,9 +38,9 @@ public class SceneLoader : MonoBehaviour
 
     IEnumerator TransitionQuit()
     {
-        yield return new WaitForSeconds(FadeOutDelay * 2);
+        yield return new WaitForSecondsRealtime(FadeOutDelay * 2);
         transitionAnimator.SetTrigger("ToBlack");
-        yield return new WaitForSeconds(toBlackTime);
+        yield return new WaitForSecondsRealtime(toBlackTime);
 
 #if UNITY_EDITOR
         EditorApplication.isPlaying = false;
