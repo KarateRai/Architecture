@@ -5,16 +5,10 @@ using TMPro;
 public class Pickup_UI : MonoBehaviour
 {
     public TMP_Text pickup_Text;
-    public int current_Pickup_Amount = 0;
 
-    public void SetStartingPickupValue(int pickup_Amount)
+    private void Update()
     {
-        current_Pickup_Amount = pickup_Amount;
+        pickup_Text.text = Player.pickup_amount.ToString();
     }
-
-    public void AddPickups()
-    {
-        current_Pickup_Amount++;
-        pickup_Text.text = current_Pickup_Amount.ToString();
-    }
+    
 }

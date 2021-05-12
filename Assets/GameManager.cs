@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        Player.ResetPoints();
         List<SpriteRenderer> transparentFXsprites = new List<SpriteRenderer>();
         foreach (SpriteRenderer o in FindObjectsOfType<SpriteRenderer>())
         {

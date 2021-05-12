@@ -47,7 +47,7 @@ public class Movement : MonoBehaviour
     private int dashDir;
     public int extraJumps = 1;
     public int dashes = 1;
-    private int dashCounter;
+    public int dashCounter;
 
 
     //Camera settings
