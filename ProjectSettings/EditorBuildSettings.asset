@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Live Scenes/StageOne.unity
     guid: 69bdbe4bd6e3f6e43896793435cbb01d
+  - enabled: 1
+    path: Assets/Scenes/Live Scenes/StageClear.unity
+    guid: 84bd8edba6224ea4bbbe5818063ad8bf
+  - enabled: 1
+    path: Assets/Scenes/Live Scenes/GameOver.unity
+    guid: 2e25f627effe7cf45a484200fe2f7c92
   m_configObjects: {}
