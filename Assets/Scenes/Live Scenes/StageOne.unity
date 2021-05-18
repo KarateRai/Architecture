@@ -21325,6 +21325,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180.001
       objectReference: {fileID: 0}
+    - target: {fileID: 5298673957162816602, guid: 66a4a5a8cb2946e4992e2b70dc5868c0, type: 3}
+      propertyPath: m_Size.y
+      value: 0.39298296
+      objectReference: {fileID: 0}
+    - target: {fileID: 5298673957162816602, guid: 66a4a5a8cb2946e4992e2b70dc5868c0, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.30350852
+      objectReference: {fileID: 0}
     - target: {fileID: 5298673957162816605, guid: 66a4a5a8cb2946e4992e2b70dc5868c0, type: 3}
       propertyPath: m_Name
       value: BetaFloor (22)
@@ -31787,6 +31795,14 @@ PrefabInstance:
     - target: {fileID: 5298673955275560997, guid: 66a4a5a8cb2946e4992e2b70dc5868c0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5298673957162816602, guid: 66a4a5a8cb2946e4992e2b70dc5868c0, type: 3}
+      propertyPath: m_Size.x
+      value: 1.0848172
+      objectReference: {fileID: 0}
+    - target: {fileID: 5298673957162816602, guid: 66a4a5a8cb2946e4992e2b70dc5868c0, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.042408556
       objectReference: {fileID: 0}
     - target: {fileID: 5298673957162816605, guid: 66a4a5a8cb2946e4992e2b70dc5868c0, type: 3}
       propertyPath: m_Name
