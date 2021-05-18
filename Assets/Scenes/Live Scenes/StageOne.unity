@@ -197,6 +197,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Portal1Exit
       objectReference: {fileID: 0}
+    - target: {fileID: 5279678466037850981, guid: 072b6ca173ed45a4aa85f2f6c6d37fa2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.42
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 072b6ca173ed45a4aa85f2f6c6d37fa2, type: 3}
 --- !u!4 &13630616 stripped
