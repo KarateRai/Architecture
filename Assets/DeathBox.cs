@@ -1,11 +1,10 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DeathBox : MonoBehaviour
 {
     [SerializeField] GameObject checkPoint;
 <<<<<<< Updated upstream
-=======
-    [SerializeField] UnityEvent onDeath;
     private bool takeDmg = true;
     private void Update()
     {
@@ -20,6 +19,19 @@ public class DeathBox : MonoBehaviour
 >>>>>>> Stashed changes
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.transform.position = checkPoint.transform.position;
+        if (takeDmg == true)
+        {
+            if (Player.current_Health - 20 <= 0)
+            {
+                onDeath.Invoke();
+            }
+            else
+            {
+                collision.transform.position = checkPoint.transform.position;
+            }
+            Player.TakeDamage(20);
+            takeDmg = false;
+
+        }
     }
 }

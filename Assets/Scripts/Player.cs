@@ -10,7 +10,6 @@ public static class Player
     public static int pickup_amount = 0;
 
     public static HealthBar_UI healthBar;
-    public static Pickup_UI pickup;
 
     public static void AddPoints(int i)
     {
@@ -20,6 +19,7 @@ public static class Player
     public static void ResetPoints()
     {
         pickup_amount = 0;
+        current_Health = max_Health;
     }
 
     //TEMP: Just to test the healthbar function.

@@ -45,8 +45,8 @@ public class Movement : MonoBehaviour
     public float dashTime;
     private float dashTimeCounter;
     public float dashCooldown;
-    private float dashCooldownCounter;
-    private float dashDir;
+    public float dashCooldownCounter;
+    private float dashDir = 1;
     public int dashes = 1;
     private int dashCounter;
 
@@ -61,8 +61,8 @@ public class Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         crouchDisableCollider = GetComponent<BoxCollider2D>();
-        
-       
+
+
         //Setup counters
         jumpsLeft = extraJumps;
         dashTimeCounter = dashTime;
@@ -102,22 +102,24 @@ public class Movement : MonoBehaviour
                 animState.SetCharacterState(AnimationState.CharacterState.Run);
             }
         }
-        
+
 
         if (inputX < 0)
         {
             spriteRenderer.flipX = true;
+            dashDir = -1;
         }
         else if (inputX > 0)
         {
             spriteRenderer.flipX = false;
+            dashDir = 1;
         }
 
 
-        
+
     }
 
-    
+
     void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundPoint.position, .2f, whatIsGround);
@@ -153,7 +155,7 @@ public class Movement : MonoBehaviour
         //Dash
         if (dashTimeCounter <= 0)
         {
-            dashDir = 0;
+            //dashDir = 0;
             dashCooldownCounter -= Time.deltaTime;
             if (dashCooldownCounter < 0)
             {
@@ -172,7 +174,7 @@ public class Movement : MonoBehaviour
                 rb.velocity = Vector2.left * dashSpeed;
             }
         }
-       
+
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -186,7 +188,7 @@ public class Movement : MonoBehaviour
         {
             jumpBufferCount = jumpBuffer;
         }
-        
+
         if (jumpBufferCount >= 0 && cayoteCounter > 0 && context.performed || jumpBufferCount >= 0 && jumpsLeft > 0 && context.performed)
         {
             jumpsLeft--;
@@ -203,7 +205,7 @@ public class Movement : MonoBehaviour
     {
         if (context.performed && dashTimeCounter <= 0 && dashCounter > 0)
         {
-            dashDir = inputX;
+            //dashDir = inputX;
             dashTimeCounter = dashTime;
             dashCooldownCounter = dashCooldown;
             dashCounter--;
@@ -211,7 +213,7 @@ public class Movement : MonoBehaviour
         }
     }
 
-    
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Teleporter t = collision.GetComponent<Teleporter>();
@@ -221,4 +223,3 @@ public class Movement : MonoBehaviour
         }
     }
 }
-

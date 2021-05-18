@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     private ActionMaps currentActionMap;
     public enum GameState
     {
+        //TODO:
+        //Add no control state for end of stage
         Playing,
         Paused
     }
