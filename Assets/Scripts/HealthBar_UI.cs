@@ -7,6 +7,11 @@ public class HealthBar_UI : MonoBehaviour
 {
     public Slider slider;
 
+    private void Awake()
+    {
+        Player.healthBar = this;
+    }
+
     public void SetMaxHealth(int Health)
     {
         slider.maxValue = Health;
