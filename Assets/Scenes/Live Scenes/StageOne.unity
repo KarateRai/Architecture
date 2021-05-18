@@ -2374,11 +2374,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5662951933022186310, guid: a91805e44e92e5b47b7496ab4d5b8494, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5662951933022186310, guid: a91805e44e92e5b47b7496ab4d5b8494, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5662951933224250114, guid: a91805e44e92e5b47b7496ab4d5b8494, type: 3}
       propertyPath: m_Name
@@ -3598,7 +3598,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2122537701
 Transform:
   m_ObjectHideFlags: 0
