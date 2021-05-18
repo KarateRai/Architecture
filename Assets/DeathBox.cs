@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public class DeathBox : MonoBehaviour
 {
     [SerializeField] GameObject checkPoint;
-<<<<<<< Updated upstream
+    [SerializeField] UnityEvent onDeath;
     private bool takeDmg = true;
     private void Update()
     {
@@ -15,8 +15,6 @@ public class DeathBox : MonoBehaviour
     {
         takeDmg = true;
     }
-
->>>>>>> Stashed changes
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (takeDmg == true)

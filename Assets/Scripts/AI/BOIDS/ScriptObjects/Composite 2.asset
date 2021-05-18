@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b66f335929c63346a695a7cd1c8a3a4, type: 3}
-  m_Name: Composite
-  m_EditorClassIdentifier:
+  m_Name: Composite 2
+  m_EditorClassIdentifier: 
   behaviors:
-  - {fileID: 11400000, guid: 4726f8e093f840a4f9baa5e283269b5a, type: 2}
+  - {fileID: 11400000, guid: a51d74dfaf1a53742b24f1cd09ef082b, type: 2}
   - {fileID: 11400000, guid: b9f6d1b727c5ab84f9141cb88e9e5e4a, type: 2}
   - {fileID: 11400000, guid: b808af73ac1dbdd4a994ebc1f4d4463e, type: 2}
   - {fileID: 11400000, guid: 7949fa545baa331409784e67c718bd37, type: 2}
   weights:
-  - 0.5
-  - 0.3
-  - 0.15
+  - 0.05
+  - 0.1
+  - 0.1
   - 0.75

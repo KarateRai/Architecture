@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1286693170168914575}
   - component: {fileID: 1286693170168914574}
   m_Layer: 0
-  m_Name: Flock BOIDS
+  m_Name: Flock BOIDS 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,7 +46,7 @@ MonoBehaviour:
   agentPrefab: {fileID: 3588060552783165607, guid: 47bd111603def0143bbdece9e1558e53, type: 3}
   agents: []
   behavior: {fileID: 11400000, guid: c42f5f03c94c9a545b9ef2e0e1200f07, type: 2}
-  startingCount: 100
+  startingCount: 10
   driveFactor: 10
   maxSpeed: 5
   neighborRadius: 1.5
