@@ -7,7 +7,7 @@ using UnityEngine;
 public class AnimationState : MonoBehaviour
 {
     private Animator animator;
-    private List<string> animationBoolNames;
+    private List<string> animationBoolNames;    
     public enum CharacterState
     {
         Idle,
@@ -20,7 +20,7 @@ public class AnimationState : MonoBehaviour
         Crouch
     }
     private CharacterState currentState;
-
+    private bool playSound;
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -45,7 +45,7 @@ public class AnimationState : MonoBehaviour
 
     void Update()
     {
-        UpdateAnimator();
+        UpdateAnimator();        
     }
 
     private void UpdateAnimator()
@@ -54,15 +54,35 @@ public class AnimationState : MonoBehaviour
         switch (currentState)
         {
             case CharacterState.Idle:
+                if (playSound)
+                {
+                    FindObjectOfType<AudioManager>().Stop("steps");
+                    playSound = false;
+                }
                 SetAniBoolTrue("AllOff"); //no bool is named AllOff, thus all will turn off.
                 break;
             case CharacterState.Run:
+                if (!playSound)
+                {
+                    FindObjectOfType<AudioManager>().Play("steps");
+                    playSound = true;
+                }
                 SetAniBoolTrue("isRunning");
                 break;
             case CharacterState.Jump:
                 SetAniBoolTrue("isJumping");
+                if (playSound)
+                {
+                    FindObjectOfType<AudioManager>().Stop("steps");
+                    playSound = false;
+                }
                 break;
             case CharacterState.Fall:
+                if (playSound)
+                {
+                    FindObjectOfType<AudioManager>().Stop("steps");
+                    playSound = false;
+                }
                 SetAniBoolTrue("isFalling");
                 break;
             case CharacterState.Land: //TimeUpAnimation script should call for switching to idle OnStateExit.
@@ -127,7 +147,7 @@ public class AnimationState : MonoBehaviour
                 return true;
             case CharacterState.Fall:
                 return true;
-            case CharacterState.Land: 
+            case CharacterState.Land:
                 return false;
             case CharacterState.Dash:
                 return true;
@@ -159,7 +179,7 @@ public class AnimationState : MonoBehaviour
                 return false;
             case CharacterState.Crouch:
                 return false;
-            default: 
+            default:
                 return true;
         }
     }

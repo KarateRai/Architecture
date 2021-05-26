@@ -126,8 +126,7 @@ public class Movement : MonoBehaviour
 
         //Move on X plane
         rb.velocity = new Vector2(inputX * moveSpeed, rb.velocity.y);
-
-
+        
         //Cayote timer
         if (isGrounded)
         {
@@ -151,6 +150,7 @@ public class Movement : MonoBehaviour
         {
             cameraTarget.localPosition = new Vector3(Mathf.Lerp(cameraTarget.localPosition.x, aheadAmount * rb.velocity.x, aheadSpeed * Time.deltaTime), cameraTarget.localPosition.y, cameraTarget.localPosition.z);
         }
+
 
         //Dash
         if (dashTimeCounter <= 0)
@@ -179,7 +179,7 @@ public class Movement : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
-        inputX = context.ReadValue<Vector2>().x;
+        inputX = context.ReadValue<Vector2>().x;        
     }
 
     public void Jump(InputAction.CallbackContext context)
