@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1745659768581211038}
   - component: {fileID: 1531508562146829140}
   - component: {fileID: 4593933103786125827}
+  - component: {fileID: 4478781991038043186}
   m_Layer: 5
   m_Name: buttonQUIT
   m_TagString: Untagged
@@ -123,6 +124,33 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4478781991038043186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136136269338358768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7a157250df24c948926816fad45c657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHighlighted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: menu_step
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &310516286054288187
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,6 +163,7 @@ GameObject:
   - component: {fileID: 8120930490345808874}
   - component: {fileID: 4394518949801087066}
   - component: {fileID: 465806886934598661}
+  - component: {fileID: 175939695958772357}
   m_Layer: 5
   m_Name: buttonCONTROLS
   m_TagString: Untagged
@@ -246,6 +275,33 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &175939695958772357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310516286054288187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7a157250df24c948926816fad45c657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHighlighted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: menu_step
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &537152358098438898
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,6 +623,7 @@ GameObject:
   - component: {fileID: 3879156104976556560}
   - component: {fileID: 114322399875676526}
   - component: {fileID: 4801224636269523485}
+  - component: {fileID: 9073681406011687608}
   m_Layer: 5
   m_Name: buttonCONTINUE
   m_TagString: Untagged
@@ -678,6 +735,33 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &9073681406011687608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686731219366134672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7a157250df24c948926816fad45c657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHighlighted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: menu_step
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1716583103849949122
 GameObject:
   m_ObjectHideFlags: 0
@@ -1925,6 +2009,7 @@ GameObject:
   - component: {fileID: 2025355202718362194}
   - component: {fileID: 638737698712314833}
   - component: {fileID: 5184245659926816226}
+  - component: {fileID: 5899479518796292110}
   m_Layer: 5
   m_Name: buttonOPTIONS
   m_TagString: Untagged
@@ -2036,6 +2121,33 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5899479518796292110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6954528663989162733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7a157250df24c948926816fad45c657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHighlighted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: menu_step
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7090598676869149183
 GameObject:
   m_ObjectHideFlags: 0
