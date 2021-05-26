@@ -197,6 +197,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Portal1Exit
       objectReference: {fileID: 0}
+    - target: {fileID: 5279678466037850981, guid: 072b6ca173ed45a4aa85f2f6c6d37fa2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.42
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 072b6ca173ed45a4aa85f2f6c6d37fa2, type: 3}
 --- !u!4 &13630616 stripped
@@ -1044,6 +1048,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 757e65686f01b6441950bbf5e120037f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &695512799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695512796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4890975a97b6ecd4ebec8dcbfda4308d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: coin
+    clip: {fileID: 8300000, guid: 7b618daf1e3cbbc4c898425093de2251, type: 3}
+    volume: 0.143
+    volumeVariance: 0
+    pitch: 1.4
+    pitchVariance: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: steps
+    clip: {fileID: 8300000, guid: e8334624324b4d644951613a2efa0dea, type: 3}
+    volume: 0.941
+    volumeVariance: 0
+    pitch: 1.24
+    pitchVariance: 0
+    loop: 1
+    source: {fileID: 0}
 --- !u!114 &705097099
 MonoBehaviour:
   m_ObjectHideFlags: 0
