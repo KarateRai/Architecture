@@ -64055,10 +64055,6 @@ PrefabInstance:
       propertyPath: clearStage.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1928366855}
-    - target: {fileID: 8290586905636173193, guid: 3392415450bda864c9676bc88fc57d36, type: 3}
-      propertyPath: clearStage.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: StageClear
-      objectReference: {fileID: 0}
     - target: {fileID: 9014257315356238728, guid: 3392415450bda864c9676bc88fc57d36, type: 3}
       propertyPath: m_RootOrder
       value: 3
